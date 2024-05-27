@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Finalpro</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <nav>
+      <ul>
+        <% if user_signed_in? %>
+          <li><%= link_to t(:logout), destroy_user_session_path, method: :delete %></li>
+        <% else %>
+          <li><%= link_to t(:login), new_user_session_path %></li>
+          <li><%= link_to t(:sign_up), new_user_registration_path %></li>
+        <% end %>
+      </ul>
+      <ul>
+        <li><%= link_to "English", url_for(locale: :en) %></li>
+        <li><%= link_to "Русский", url_for(locale: :ru) %></li>
+        <li><%= link_to "বাংলা", url_for(locale: :bn) %></li>
+      </ul>
+    </nav>
+
+    <%= yield %>
+  </body>
+</html>

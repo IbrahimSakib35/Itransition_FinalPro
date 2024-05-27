@@ -1,0 +1,8 @@
+# config/locales/bn.yml
+bn:
+  hello: "হ্যালো"
+  logout: "প্রস্থান"
+  login: "লগইন"
+  sign_up: "নিবন্ধন করুন"
+  welcome: "সংগ্রহ পরিচালনার অ্যাপে স্বাগতম"
+  need_login: "আপনাকে আপনার সংগ্রহগুলি পরিচালনা করতে %{login} বা %{sign_up} করতে হবে।"
