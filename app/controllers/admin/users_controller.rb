@@ -2,44 +2,44 @@ class Admin::UsersController < ApplicationController
     before_action :authenticate_user!
     before_action :check_admin
   
-    def index
+    def user_management
       @users = User.all
     end
   
-    def block
-      user = User.find(params[:id])
-      user.update(blocked: true)
-      redirect_to admin_users_path, notice: "User blocked."
+    def block_user
+      id = params[:id]
+      User.unscoped.where(id: id).update_all(blocked: "blocked")
+      redirect_to admin_user_management_path, notice: "User blocked."
     end
   
-    def unblock
-      user = User.find(params[:id])
-      user.update(blocked: false)
-      redirect_to admin_users_path, notice: "User unblocked."
+    def unblock_user
+      id = params[:id]
+      User.unscoped.where(id: id).update_all(blocked: "active")
+      redirect_to admin_user_management_path, notice: "User unblocked."
     end
   
-    def destroy
-      user = User.find(params[:id])
-      user.destroy
-      redirect_to admin_users_path, notice: "User deleted."
+    def delete_user
+      id = params[:id]
+      User.unscoped.where(id: id).destroy_all
+      redirect_to admin_user_management_path, notice: "User deleted."
     end
   
     def add_admin
-      user = User.find(params[:id])
-      user.update(admin: true)
-      redirect_to admin_users_path, notice: "User added to admins."
+      id = params[:id]
+      User.unscoped.where(id: id).update_all(admin: "admin")
+      redirect_to admin_user_management_path, notice: "User added to admins."
     end
   
     def remove_admin
-      user = User.find(params[:id])
-      user.update(admin: false)
-      redirect_to admin_users_path, notice: "User removed from admins."
+      id = params[:id]
+      User.unscoped.where(id: id).update_all(admin: "user")
+      redirect_to admin_user_management_path, notice: "User removed from admins."
     end
   
     private
   
     def check_admin
-      redirect_to root_path, alert: "You are not authorized to access this page." unless current_user.admin?
+      redirect_to root_path, alert: "You are not authorized to access this page." unless current_user.admin == "admin"
     end
 end
   
