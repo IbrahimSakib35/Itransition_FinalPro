@@ -1,0 +1,12 @@
+<h1>Items</h1>
+
+<ul>
+  <% @items.each do |item| %>
+    <li>
+      <%= link_to item.name, collection_item_path(@collection, item) %>
+    </li>
+  <% end %>
+</ul>
+
+
+<%= link_to 'New Item', new_collection_item_path(@collection) %>

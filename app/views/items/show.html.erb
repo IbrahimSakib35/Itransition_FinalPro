@@ -1,0 +1,13 @@
+<p><strong>Name:</strong> <%= @item.name %></p>
+<% if @item.tags.present? %>
+  <p><strong>Tags:</strong> <%= @item.tags.join(', ') %></p>
+<% else %>
+  <p><strong>Tags:</strong> No tags available</p>
+<% end %>
+<p><strong>Tags:</strong> <%= @item.tags %></p>
+
+
+
+<%= link_to 'Edit', edit_collection_item_path(@collection, @item) %> |
+<%= button_to 'Delete', collection_item_path(@collection, @item), method: :delete, data: { confirm: 'Are you sure?' } %> |
+<%= link_to 'Back', collection_items_path(@collection) %>

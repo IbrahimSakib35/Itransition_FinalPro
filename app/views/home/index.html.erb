@@ -4,3 +4,11 @@
 <% else %>
   <p>You need to <%= link_to 'log in', new_user_session_path %> or <%= link_to 'sign up', new_user_registration_path %> to manage your collections.</p>
 <% end %>
+
+
+<%= link_to 'My Collections', collections_path, class: 'btn btn-primary' %>
+<%= link_to 'My Items', items_path, class: 'btn btn-primary' %>
+<%= link_to 'Create Collection', new_collection_path, class: 'btn btn-primary' %>
+<% @collection = current_user.collections.first %>
+<%= link_to 'Create Item', new_item_path(collection_id: @collection.id), class: 'btn btn-primary' %>
+
