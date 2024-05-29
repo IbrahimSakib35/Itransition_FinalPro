@@ -1,10 +1,10 @@
 <p><strong>Name:</strong> <%= @item.name %></p>
 <% if @item.tags.present? %>
-  <p><strong>Tags:</strong> <%= @item.tags.join(', ') %></p>
+  <p><strong>Tags:</strong> <%= @item.tags.split(', ').join(', ') %></p>
 <% else %>
   <p><strong>Tags:</strong> No tags available</p>
 <% end %>
-<p><strong>Tags:</strong> <%= @item.tags %></p>
+
 
 
 

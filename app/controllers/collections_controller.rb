@@ -15,16 +15,16 @@ class CollectionsController < ApplicationController
     # GET /collections/new
     def new
       @collection = current_user.collections.build
+      @categories = Collection::CATEGORIES
     end
   
-    # GET /collections/1/edit
     def edit
+      @categories = Collection::CATEGORIES
     end
   
-    # POST /collections
     def create
       @collection = current_user.collections.build(collection_params)
-  
+      @categories = Collection::CATEGORIES
       if @collection.save
         redirect_to @collection, notice: 'Collection was successfully created.'
       else
@@ -32,8 +32,8 @@ class CollectionsController < ApplicationController
       end
     end
   
-    # PATCH/PUT /collections/1
     def update
+      @categories = Collection::CATEGORIES
       if @collection.update(collection_params)
         redirect_to @collection, notice: 'Collection was successfully updated.'
       else

@@ -1,6 +1,6 @@
 <h1>Edit Collection</h1>
 
-<%= render 'form' %>
+<%= render 'form', collection: @collection, categories: @categories %>
 
 <%= link_to 'Show', @collection %> |
 <%= link_to 'Back', collections_path %>
