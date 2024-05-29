@@ -49,13 +49,15 @@ class CollectionsController < ApplicationController
   
     private
       # Use callbacks to share common setup or constraints between actions.
-      def set_collection
-        @collection = current_user.collections.find(params[:id])
-      end
-  
-      # Only allow a list of trusted parameters through.
-      def collection_params
-        params.require(:collection).permit(:name, :description, :category)
-      end
+    def set_collection
+      @collection = Collection.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      redirect_to root_path, alert: "Collection not found."
+    end
+
+    # Only allow a list of trusted parameters through.
+    def collection_params
+      params.require(:collection).permit(:name, :description, :category)
+    end
 end
   

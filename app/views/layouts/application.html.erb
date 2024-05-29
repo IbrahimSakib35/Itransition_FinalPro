@@ -31,39 +31,25 @@
       </ul>
     </nav>
 
-    <main>
-      <section id="latest-items">
-        <h2>Latest Items</h2>
-        <ul>
-          <% if @latest_items.present? %>
-            <% @latest_items.each do |item| %>
-              <li>
-                <%= link_to item.name, collection_item_path(item.collection, item) %>
-                (Collection: <%= link_to item.collection.name, collection_path(item.collection) %>, Author: <%= item.collection.user.email %>)
-              </li>
-            <% end %>
-          <% else %>
-            <li>No items available</li>
-          <% end %>
-        </ul>
-      </section>
+    <h2>Latest Items</h2>
+    <ul>
+      <% @latest_items.each do |item| %>
+        <li>
+          <%= link_to item.name, collection_item_path(item.collection, item) %>
+          (Collection: <%= link_to item.collection.name, collection_path(item.collection) %>, Author: <%= item.collection.user.email %>)
+        </li>
+      <% end %>
+    </ul>
 
-      <section id="largest-collections">
-        <h2>Top 5 Largest Collections</h2>
-        <ul>
-          <% if @largest_collections.present? %>
-            <% @largest_collections.each do |collection| %>
-              <li>
-                <%= link_to collection.name, collection_path(collection) %>
+    <h2>Top 5 Largest Collections</h2>
+    <ul>
+      <% @largest_collections.each do |collection| %>
+        <li>
+          <%= link_to collection.name, collection_path(collection) %>
                 (Items: <%= collection.items.count %>, Author: <%= collection.user.email %>)
-              </li>
-            <% end %>
-          <% else %>
-            <li>No collections available</li>
-          <% end %>
-        </ul>
-      </section>
-    </main>
+        </li>
+      <% end %>
+    </ul>
 
     <%= yield %>
   </body>

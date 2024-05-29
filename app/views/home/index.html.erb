@@ -4,19 +4,20 @@
 
 <% end %>
 
+<% if user_signed_in? %>
+  <%= link_to 'My Collections', collections_path, class: 'btn btn-primary' %>
 
-<%= link_to 'My Collections', collections_path, class: 'btn btn-primary' %>
-
-<%= link_to 'Create Collection', new_collection_path, class: 'btn btn-primary' %>
-<% @collection = current_user.collections.first %>
-<% if @collection.present? && @collection.items.any? %>
+  <%= link_to 'Create Collection', new_collection_path, class: 'btn btn-primary' %>
+  <% if current_user.collections.any? && current_user.collections.any? { |collection| collection.items.any? } %>
   <%= link_to 'My Items', items_path, class: 'btn btn-primary' %>
+  <% end %>
 
-<% end %>
-<% @collection = current_user.collections.first %>
-<% if @collection.present? %>
+  
+  <% @collection = current_user.collections.first %>
+  <% if @collection.present? %>
 
-  <%= link_to 'Create Item', new_item_path(collection_id: @collection.id), class: 'btn btn-primary' %>
-<% else %>
-  <p>You must create a collection first before adding items.</p>
+    <%= link_to 'Create Item', new_item_path(collection_id: @collection.id), class: 'btn btn-primary' %>
+  <% else %>
+    <p>You must create a collection first before adding items.</p>
+  <% end %>
 <% end %>

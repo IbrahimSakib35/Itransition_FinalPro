@@ -10,6 +10,8 @@
 <% else %>
   <p>No items in this collection.</p>
 <% end %>
-<%= link_to 'Edit', edit_collection_path(@collection) %> |
-<%= link_to 'Delete', collection_path(@collection), method: :delete, data: { confirm: 'Are you sure?' } %> |
+<% if user_signed_in? && current_user == @collection.user %>
+  <%= link_to 'Edit', edit_collection_path(@collection) %> |
+  <%= link_to 'Delete', collection_path(@collection), method: :delete, data: { confirm: 'Are you sure?' } %> |
+<% end %>
 <%= link_to 'Back', collections_path %>

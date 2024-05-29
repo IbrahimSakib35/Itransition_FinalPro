@@ -50,7 +50,7 @@ class ItemsController < ApplicationController
   private
 
     def set_collection
-      @collection = current_user.collections.find(params[:collection_id])
+      @collection = Collection.find(params[:collection_id])
     rescue ActiveRecord::RecordNotFound
       @collection = nil
     end
@@ -58,6 +58,7 @@ class ItemsController < ApplicationController
     def set_item
       @item = @collection.items.find(params[:id])
     end
+
 
     def item_params
       params.require(:item).permit(:name, :tags, :collection_id)
