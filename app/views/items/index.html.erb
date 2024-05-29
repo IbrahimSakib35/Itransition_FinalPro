@@ -3,10 +3,9 @@
 <ul>
   <% @items.each do |item| %>
     <li>
-      <%= link_to item.name, collection_item_path(@collection, item) %>
+      <%= link_to item.name, collection_item_path(item.collection, item) %>
     </li>
   <% end %>
 </ul>
 
-
-<%= link_to 'New Item', new_collection_item_path(@collection) %>
+<%= link_to 'New Item', new_item_path, class: 'btn btn-primary' %>

@@ -55,22 +55,41 @@ collection3 = Collection.create!(
 )
 
 # Create items for collections
-Item.create!(
+Item1=Item.create!(
   name: 'The Great Gatsby',
   tags: 'classic, literature',
   collection: collection1,
 )
+Item2=Item.create!(
+  name: 'Spiderman',
+  tags: 'fictional',
+  collection: collection1,
 
-Item.create!(
+)
+Item3=Item.create!(
   name: 'Stop Sign',
   tags: 'road, safety',
   collection: collection2,
 
 )
+Item4=Item.create!(
+  name: 'Correct Sign',
+  tags: 'write, test',
+  collection: collection2,
 
-Item.create!(
+)
+Item5=Item.create!(
   name: 'Antique Spoon',
   tags: 'antique, kitchenware',
   collection: collection3,
 )
-
+Item6=Item.create!(
+  name: 'Dishes',
+  tags: 'kitchenware',
+  collection: collection3,
+)
+Item7=Item.create!(
+  name: 'Ladle',
+  tags: 'food, soup',
+  collection: collection3,
+)

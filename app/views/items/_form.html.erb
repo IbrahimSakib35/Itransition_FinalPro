@@ -12,11 +12,6 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :collection_id, 'Collection' %>
-    <%= form.collection_select :collection_id, current_user.collections, :id, :name, prompt: 'Select a collection' %>
-  </div>
-
-  <div class="field">
     <%= form.label :name %>
     <%= form.text_field :name %>
   </div>
@@ -24,6 +19,11 @@
   <div class="field">
     <%= form.label :tags %>
     <%= form.text_field :tags %>
+  </div>
+
+  <div class="field">
+    <%= form.label :collection_id %>
+    <%= form.collection_select :collection_id, current_user.collections, :id, :name, prompt: true %>
   </div>
 
   <div class="actions">
