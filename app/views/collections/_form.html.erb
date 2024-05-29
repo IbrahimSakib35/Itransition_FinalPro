@@ -1,10 +1,10 @@
-<%= form_with(model: @item, url: collection_items_path(@item.collection), local: true) do |form| %>
-  <% if @item.errors.any? %>
+<%= form_with(model: @collection, local: true) do |form| %>
+  <% if @collection.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h2>
+      <h2><%= pluralize(@collection.errors.count, "error") %> prohibited this collection from being saved:</h2>
 
       <ul>
-        <% @item.errors.full_messages.each do |message| %>
+        <% @collection.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
       </ul>
@@ -17,13 +17,13 @@
   </div>
 
   <div class="field">
-    <%= form.label :tags %>
-    <%= form.text_field :tags, value: @item.tags&.join(', ') %>
+    <%= form.label :description %>
+    <%= form.text_area :description %>
   </div>
 
   <div class="field">
-    <%= form.label :collection_id %>
-    <%= form.collection_select :collection_id, current_user.collections, :id, :name, include_blank: false %>
+    <%= form.label :category %>
+    <%= form.select :category, options_for_select(@categories, collection.category) %>
   </div>
 
   <div class="actions">

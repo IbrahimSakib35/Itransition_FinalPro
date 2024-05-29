@@ -16,7 +16,7 @@
         <% if user_signed_in? %>
           <li><%= link_to 'Home', root_path %></li>
           <% if current_user.admin == "admin" %>
-          <li><%= link_to 'User Management', admin_user_management_path %></li>
+            <li><%= link_to 'User Management', admin_user_management_path %></li>
           <% end %>
           <li><%= link_to t(:logout), destroy_user_session_path, method: :delete %></li>
         <% else %>
@@ -30,6 +30,40 @@
         <li><%= link_to "বাংলা", url_for(locale: :bn) %></li>
       </ul>
     </nav>
+
+    <main>
+      <section id="latest-items">
+        <h2>Latest Items</h2>
+        <ul>
+          <% if @latest_items.present? %>
+            <% @latest_items.each do |item| %>
+              <li>
+                <%= link_to item.name, collection_item_path(item.collection, item) %>
+                (Collection: <%= link_to item.collection.name, collection_path(item.collection) %>, Author: <%= item.collection.user.email %>)
+              </li>
+            <% end %>
+          <% else %>
+            <li>No items available</li>
+          <% end %>
+        </ul>
+      </section>
+
+      <section id="largest-collections">
+        <h2>Top 5 Largest Collections</h2>
+        <ul>
+          <% if @largest_collections.present? %>
+            <% @largest_collections.each do |collection| %>
+              <li>
+                <%= link_to collection.name, collection_path(collection) %>
+                (Items: <%= collection.items.count %>, Author: <%= collection.user.email %>)
+              </li>
+            <% end %>
+          <% else %>
+            <li>No collections available</li>
+          <% end %>
+        </ul>
+      </section>
+    </main>
 
     <%= yield %>
   </body>

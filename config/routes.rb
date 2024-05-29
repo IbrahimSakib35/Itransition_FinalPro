@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'tags/show'
   devise_for :users, controllers: {
     sessions: 'users/sessions'
   }
@@ -21,6 +22,8 @@ Rails.application.routes.draw do
   
   resources :items, only: [:new, :create]
   resources :items, only: [:index, :show]
+  resources :tags, only: [:show]
+
   
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

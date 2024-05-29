@@ -1,8 +1,7 @@
 <h1>Welcome to the Collection Empire</h1>
 <% if user_signed_in? %>
   <p>Hello, <%= current_user.email %>!</p>
-<% else %>
-  <p>You need to <%= link_to 'log in', new_user_session_path %> or <%= link_to 'sign up', new_user_registration_path %> to manage your collections.</p>
+
 <% end %>
 
 
