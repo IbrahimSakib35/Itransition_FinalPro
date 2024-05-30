@@ -1,17 +1,29 @@
-<h1><%= @collection.name %></h1>
-<p><strong>Description:</strong> <%= @collection.description %></p>
-<p><strong>Category:</strong> <%= @collection.category %></p>
-<% if @items.any? %>
-  <ul>
-    <% @items.each do |item| %>
-      <li><%= item.name %></li>
-    <% end %>
-  </ul>
-<% else %>
-  <p>No items in this collection.</p>
-<% end %>
-<% if user_signed_in? && current_user == @collection.user %>
-  <%= link_to 'Edit', edit_collection_path(@collection) %> |
-  <%= link_to 'Delete', collection_path(@collection), method: :delete, data: { confirm: 'Are you sure?' } %> |
-<% end %>
-<%= link_to 'Back', collections_path %>
+<div class="container">
+  <div class="row justify-content-center mt-5">
+    <div class="col-md-6 text-center">
+        <h1><%= @collection.name %></h1>
+        <p><strong><%=t(:description)%>:</strong> <%= @collection.description %></p>
+        <p><strong><%=t(:category)%>:</strong> <%= @collection.category %></p>
+        <% if @items.any? %>
+          <ul>
+            <% @items.each do |item| %>
+              <li><%= item.name %></li>
+            <% end %>
+          </ul>
+        <% else %>
+          <p>No items in this collection.</p>
+        <% end %>
+        <% if user_signed_in? && current_user == @collection.user %>
+        <div class="btn-group mb-2" role="group" aria-label="Collection Actions">
+          <%= link_to 'Edit', edit_collection_path(@collection), class: 'btn btn-primary' %>
+          <%= button_to 'Delete', collection_path(@collection), class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' } %>
+        </div>
+        <% end %>
+        <div class="btn-group mb-2" role="group" aria-label="Back Button">
+          <%= link_to 'Back', root_path, class: 'btn btn-secondary' %>
+        </div>
+      </div>
+  </div>
+</div>
+
+

@@ -1,9 +1,17 @@
-<p><strong>Name:</strong> <%= @item.name %></p>
-<p><strong>Tags:</strong> <%= @item.tags %></p>
-
-
-<% if user_signed_in? && current_user == @item.collection.user %>
-  <%= link_to 'Edit', edit_collection_item_path(@collection, @item) %> |
-  <%= button_to 'Delete', collection_item_path(@collection, @item), method: :delete, data: { confirm: 'Are you sure?' } %> |
-<% end %>
-<%= link_to 'Back', collections_path %>
+<div class="container">
+  <div class="row justify-content-center mt-5">
+    <div class="col-md-6 text-center">
+      <p><strong><%=t(:name)%>:</strong> <%= @item.name %></p>
+      <p><strong><%=t(:tags)%>:</strong> <%= @item.tags %></p>
+      <% if user_signed_in? && current_user == @item.collection.user %>
+      <div class="btn-group mb-2" role="group" aria-label="Collection Actions">
+        <%= link_to 'Edit', edit_collection_item_path(@collection, @item), class: 'btn btn-primary' %> |
+        <%= button_to 'Delete', collection_item_path(@collection, @item), class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' } %> |
+      </div>
+      <% end %>
+      <div class="btn-group mb-2" role="group" aria-label="Back Button">
+        <%= link_to 'Back', root_path, class: 'btn btn-secondary' %>
+      </div>
+    </div>
+  </div>
+</div>

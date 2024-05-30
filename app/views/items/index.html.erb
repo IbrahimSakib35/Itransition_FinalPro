@@ -1,11 +1,16 @@
-<h1>Items</h1>
+<div class="container">
+  <div class="row justify-content-center mt-5">
+    <div class="col-md-6 text-center">
+      <h1>Items</h1>
 
-<ul>
-  <% @items.each do |item| %>
-    <li>
-      <%= link_to item.name, collection_item_path(item.collection, item) %>
-    </li>
-  <% end %>
-</ul>
-
-<%= link_to 'New Item', new_item_path, class: 'btn btn-primary' %>
+      <ul>
+        <% @items.each do |item| %>
+          <li>
+            <%= link_to item.name, collection_item_path(item.collection, item) %>
+          </li>
+        <% end %>
+      </ul>
+      <%= link_to 'New Item', new_item_path, class: 'btn btn-primary' %>
+    </div>
+  </div>
+</div>

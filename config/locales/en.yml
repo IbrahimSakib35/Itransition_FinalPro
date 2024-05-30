@@ -26,12 +26,22 @@
 #     en:
 #       "yes": yup
 #       enabled: "ON"
-# config/locales/en.yml
+
 en:
   hello: "Hello"
   logout: "Logout"
   login: "Login"
   sign_up: "Sign Up"
-  welcome: "Welcome to the Collection Management App"
-  need_login: "You need to %{login} or %{sign_up} to manage your collections."
+  home: "Home"
+  theme: "Theme"
+  latitem: "Latest Items"
+  largecollect: "Top 5 Largest Collections"
+  collection: "Collection"
+  items: "Items"
+  author: "Author"
+  description: "Description"
+  category: "Category"
+  usermanage: "User Management"
+  name: "Name"
+  tags: "Tags"
 

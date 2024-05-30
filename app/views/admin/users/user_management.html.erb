@@ -1,37 +1,43 @@
-<h1>User Management</h1>
-<table>
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Email</th>
-      <th>Admin</th>
-      <th>Blocked</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= user.id %></td>
-        <td><%= user.email %></td>
-        <td><%= user.admin %></td>
-        <td><%= user.blocked %></td>
-        <td>
-          
-            <% if user.admin == "admin" %>
-              <%= link_to 'Remove Admin', admin_remove_admin_path(user), method: :post %>
-            <% else %>
-              <%= link_to 'Add Admin', admin_add_admin_path(user), method: :post %>
-            <% end %>
-            <% if user.blocked == "blocked" %>
-              <%= link_to 'Unblock', admin_unblock_user_path(user), method: :post %>
-            <% else %>
-              <%= link_to 'Block', admin_block_user_path(user), method: :post %>
-            <% end %>
-            <%= link_to 'Delete', admin_delete_user_path(user), method: :post, data: { confirm: 'Are you sure?' } %>
-          
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="container">
+  <div class="row justify-content-center mt-5">
+    <div class="col-md-6 text-center">
+      <h1><%=t(:usermanage)%></h1>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Email</th>
+            <th>Admin</th>
+            <th>Blocked</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @users.each do |user| %>
+            <tr>
+              <td><%= user.id %></td>
+              <td><%= user.email %></td>
+              <td><%= user.admin %></td>
+              <td><%= user.blocked %></td>
+              <td>
+                
+                  <% if user.admin == "admin" %>
+                    <%= link_to 'Remove Admin', admin_remove_admin_path(user), class: 'btn btn-primary mb-2', method: :post %>
+                  <% else %>
+                    <%= link_to 'Add Admin', admin_add_admin_path(user), class: 'btn btn-primary mb-2', method: :post %>
+                  <% end %>
+                  <% if user.blocked == "blocked" %>
+                    <%= link_to 'Unblock', admin_unblock_user_path(user), class: 'btn btn-primary mb-2', method: :post %>
+                  <% else %>
+                    <%= link_to 'Block', admin_block_user_path(user),class: 'btn btn-primary mb-2', method: :post %>
+                  <% end %>
+                  <%= link_to 'Delete', admin_delete_user_path(user),class: 'btn btn-primary mb-2', method: :post %>
+                
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

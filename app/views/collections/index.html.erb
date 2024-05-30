@@ -1,9 +1,13 @@
-<h1>My Collections</h1>
-
-<ul>
-  <% @collections.each do |collection| %>
-    <li><%= link_to collection.name, collection %></li>
-  <% end %>
-</ul>
-
-<%= link_to 'New Collection', new_collection_path %>
+<div class="container">
+  <div class="row justify-content-center mt-5">
+    <div class="col-md-6 text-center">
+      <h1>My Collections</h1>
+      <ul>
+        <% @collections.each do |collection| %>
+          <li><%= link_to collection.name, collection %></li>
+        <% end %>
+      </ul>
+      <%= link_to 'New Collection', new_collection_path, class: 'btn btn-primary' %>
+    </div>
+  </div>
+</div>
