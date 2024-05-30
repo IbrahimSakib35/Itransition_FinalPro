@@ -19,20 +19,18 @@
               <td><%= user.email %></td>
               <td><%= user.admin %></td>
               <td><%= user.blocked %></td>
-              <td>
-                
-                  <% if user.admin == "admin" %>
-                    <%= link_to 'Remove Admin', admin_remove_admin_path(user), class: 'btn btn-primary mb-2', method: :post %>
-                  <% else %>
-                    <%= link_to 'Add Admin', admin_add_admin_path(user), class: 'btn btn-primary mb-2', method: :post %>
-                  <% end %>
-                  <% if user.blocked == "blocked" %>
-                    <%= link_to 'Unblock', admin_unblock_user_path(user), class: 'btn btn-primary mb-2', method: :post %>
-                  <% else %>
-                    <%= link_to 'Block', admin_block_user_path(user),class: 'btn btn-primary mb-2', method: :post %>
-                  <% end %>
-                  <%= link_to 'Delete', admin_delete_user_path(user),class: 'btn btn-primary mb-2', method: :post %>
-                
+              <td>   
+                <% if user.admin == "admin" %>
+                  <%= link_to 'Remove Admin', admin_remove_admin_path(user), class: 'btn btn-primary mb-2', method: :post %>
+                <% else %>
+                  <%= link_to 'Add Admin', admin_add_admin_path(user), class: 'btn btn-primary mb-2', method: :post %>
+                <% end %>
+                <% if user.blocked == "blocked" %>
+                  <%= link_to 'Unblock', admin_unblock_user_path(user), class: 'btn btn-primary mb-2', method: :post %>
+                <% else %>
+                  <%= link_to 'Block', admin_block_user_path(user),class: 'btn btn-primary mb-2', method: :post %>
+                <% end %>
+                <%= link_to 'Delete', admin_delete_user_path(user),class: 'btn btn-primary mb-2', method: :post %>   
               </td>
             </tr>
           <% end %>

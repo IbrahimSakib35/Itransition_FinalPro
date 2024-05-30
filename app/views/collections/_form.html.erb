@@ -2,7 +2,6 @@
   <% if @collection.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@collection.errors.count, "error") %> prohibited this collection from being saved:</h2>
-
       <ul>
         <% @collection.errors.full_messages.each do |message| %>
           <li><%= message %></li>
@@ -10,22 +9,18 @@
       </ul>
     </div>
   <% end %>
-
   <div class="field">
     <%= form.label :name %>
     <%= form.text_field :name %>
   </div>
-
   <div class="field">
     <%= form.label :description %>
     <%= form.text_area :description %>
   </div>
-
   <div class="field">
     <%= form.label :category %>
     <%= form.select :category, options_for_select(@categories, collection.category) %>
   </div>
-
   <div class="actions">
     <%= form.submit %>
   </div>

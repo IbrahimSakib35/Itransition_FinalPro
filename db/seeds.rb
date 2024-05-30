@@ -1,4 +1,3 @@
-# Clear existing data
 User.destroy_all
 Collection.destroy_all
 Item.destroy_all
@@ -11,7 +10,6 @@ admin=User.create!(
   blocked: 'active'
 )
 
-# Create regular users
 user1 = User.create!(
   email: 'user1@example.com',
   password: 'password',
@@ -28,10 +26,8 @@ user2 = User.create!(
   blocked: 'active'
 )
 
-# Predefined categories
 categories = ["Books", "Signs", "Silverware", "Other"]
 
-# Create collections for users
 collection1 = Collection.create!(
   name: 'Books Collection',
   description: 'A collection of various books.',
@@ -54,7 +50,6 @@ collection3 = Collection.create!(
 
 )
 
-# Create items for collections
 Item1=Item.create!(
   name: 'The Great Gatsby',
   tags: 'classic, literature',
